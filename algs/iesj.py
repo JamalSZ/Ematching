@@ -68,7 +68,7 @@ class IESJ:
         return #lzc, lzc.sum()
 
 
-    def get_permutation_array(L1_indices: np.ndarray, L2_indices: np.ndarray) -> List[int]:
+    def get_permutation_array(self,L1_indices: np.ndarray, L2_indices: np.ndarray) -> List[int]:
         """Return corresponding positions of elements of L1 in L2 based on their positional indexes.
         
         Args:
@@ -82,7 +82,7 @@ class IESJ:
         return [index_map[val] for val in L2_indices]
 
 
-    def get_offset_array_op1(L1: np.ndarray, L1_prime: np.ndarray, op1: str) -> List[int]:
+    def get_offset_array_op1(self,L1: np.ndarray, L1_prime: np.ndarray, op1: str) -> List[int]:
         """Return an offset array by comparing L1 and L1' based on op1.
         
         Args:
@@ -106,7 +106,7 @@ class IESJ:
         return [bisect_left(L1_prime, val) for val in L1]
 
 
-    def get_offset_array_op2(L2: np.ndarray, L2_prime: np.ndarray, op2: str) -> List[int]:
+    def get_offset_array_op2(self,L2: np.ndarray, L2_prime: np.ndarray, op2: str) -> List[int]:
         """Return an offset array by comparing L2 and L2' based on op2.
         
         Args:
@@ -126,7 +126,7 @@ class IESJ:
             return [bisect_right(L2_prime, val) - 1 for val in L2]
 
 
-    def check_condition(L3: np.ndarray, L3_prime: np.ndarray, i: int, k: int, op: str) -> bool:
+    def check_condition(self, L3: np.ndarray, L3_prime: np.ndarray, i: int, k: int, op: str) -> bool:
         """Check if the condition L3[i] op L3_prime[k] holds.
         
         Args:

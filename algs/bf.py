@@ -7,7 +7,7 @@ class BF:
         self.epsilon = epsilon  
         self.n = len(T)
 
-    def overlap(x0,x1,tol):
+    def overlap(self,x0,x1,tol):
         st1,ed1 = x0-tol, x0+tol
         st2,ed2 = x1-tol, x1+tol
         if st2<=ed1 and st1 <= ed2:
@@ -25,7 +25,7 @@ class BF:
                 j = 0
                 end_distance = self.n - start_idx 
                 
-                while( (start_idx+j < self.n) and (i+j < start_idx) and self.overlap(self[i+j],self.T[start_idx+j],self.epsilon)>0 ):
+                while( (start_idx+j < self.n) and (i+j < start_idx) and self.overlap(self.T[i+j],self.T[start_idx+j],self.epsilon)>0 ):
                     j = j + 1
                 if j == end_distance: 
                     output[start_idx:] = 0

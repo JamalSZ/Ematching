@@ -10,7 +10,7 @@ class IFI:
         self.epsilon = epsilon  
         self.n = len(T)
 
-    def bisect_left(arr, x, lo=0, hi=None):
+    def bisect_left(self,arr, x, lo=0, hi=None):
         """
         Locate the insertion point for x in a sorted sequence arr.
         The parameters lo and hi may be used to specify a subset of the sequence
@@ -28,7 +28,7 @@ class IFI:
 
         return lo
 
-    def bisect_right(arr, x, lo=0, hi=None):
+    def bisect_right(self, arr, x, lo=0, hi=None):
         """
         Return the index after the last occurrence of x in a sorted sequence arr.
         The parameters lo and hi may be used to specify a subset of the sequence
@@ -85,7 +85,7 @@ class IFI:
 
         for cur in range(self.n-1,-1,-1):
             row = cur
-            matches = self.LZ2lookup_ifi(self, keys, Idx, self.T[cur], cur, ee)
+            matches = self.LZ2lookup_ifi(keys, Idx, self.T[cur], cur, ee)
             
             if len(matches) > 0:
                 next_row_dict = current_row_dict
