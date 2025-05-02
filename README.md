@@ -15,7 +15,9 @@ The project is organized as follows:
 
 To get started, clone the repository and navigate into the directory `Ematching`
 
-To reproduce all experiments and generate plots, simply run: python run_pipeline.py
+To reproduce all experiments and generate plots, simply run: 
+
+python run_pipeline.py
 
 This script sequentially:
 
@@ -25,7 +27,7 @@ This script sequentially:
 - Saves the resulting plots in the `Plots/` folder
 
 
-If you use this code or dataset in your research, please cite our paper:
+<!-- If you use this code or dataset in your research, please cite our paper:
 
 @article{yourpaper2025,
   title={Title of Your Paper},
@@ -33,4 +35,4 @@ If you use this code or dataset in your research, please cite our paper:
   journal={Journal/Conference},
   year={2025},
   ...
-}
+} -->
