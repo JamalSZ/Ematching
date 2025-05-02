@@ -63,7 +63,7 @@ def generate_edge_case_series(seed,n, N, case_type="random"):
 if __name__ == "__main__":
     algorithms = [algorithm_bf, algorithm_rnlj, algorithm_ifi, algorithm_iesj, algorithm_fit]
     alg_names = ["BF", "RNLJ", "IFI", "IESJ", "FIT"]
-    n_values = [8000]  # Fixed n for edge case testing
+    n_values = [100]  # Fixed n for edge case testing
     N_values = [32]  # Domain sizes for edge cases
     e_values_dict = {
         32: [0.01, 12]    

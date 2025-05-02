@@ -1,4 +1,5 @@
 import multiprocessing as mp
+import math
 from tqdm import tqdm
 import time
 import tracemalloc
@@ -33,7 +34,7 @@ def algorithm_fit(series, e, n=0):
 
 # --- Experiment Execution ---
 def run_experiment(params):
-    alg, alg_name, N, series, e, run_id = params
+    alg, alg_name, dataset, series, e, run_id = params
     n = len(series)
 
     tracemalloc.start()
@@ -46,7 +47,7 @@ def run_experiment(params):
     rt = end_time - start_time
     mem = peak_mem / (1024 * 1024)  # Convert bytes to MB
 
-    filename = f"exp_results_{alg_name}_{N}.csv"
+    filename = f"Exp_results/RealWorld/{alg_name}_{dataset}.csv"
     with open(filename, "a", newline="") as f:
         writer = csv.writer(f)
         writer.writerow([alg_name, len(series), e, rt, mem, run_id])
@@ -67,8 +68,6 @@ def get_time_series(path,n,col=None):
     return T
 
 # --- Main Execution ---
-import multiprocessing as mp
-import math
 
 def main():
     algorithms = [
@@ -80,9 +79,9 @@ def main():
     ]
 
     length = {
-        "temp": [2000, 4000, 8000, 16000],
-        "stock": [1000, 2000, 4000, 6000, 8000],
-        "etth1": [2000, 4000, 8000, 16000]
+        "temp": [100],#0, 4000, 8000, 16000],
+        "stock": [100],#, 2000, 4000, 6000, 8000],
+        "etth1": [100]#, 4000, 8000, 16000]
         }
     datasets = ["temp","etth1","stock"]
     paths = {
@@ -91,13 +90,13 @@ def main():
         "etth1":"Datasets/ETTh1.csv"
     }
     e_values_dict = {
-        "temp": [0.1,0.2, 0.4, 0.6, 0.8, 1],
-        "stock": [0.1, 5, 10, 15, 20, 25, 30],
-        "etth1": [0.1,0.2, 0.4, 0.6, 0.8, 1]
+        "temp": [0.1,0.2, 0.4],
+        "stock": [0.1, 5, 10],
+        "etth1": [0.1,0.2, 0.4]
     }
     columns = {
         "temp":"HT",
-        "stock":None,
+        "stock":"OP",
         "etth1":"OT"
     }
 
