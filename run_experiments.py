@@ -6,7 +6,7 @@ from datetime import timedelta
 
 def run_experiment(exp, exp_plot):
     """Run a single experiment and its corresponding plotting script"""
-    exp_script = f"pyExp/{exp}.py"  # Modified to match your actual filename
+    exp_script = f"pyExp/{exp}.py"
     plot_script = f"pyPlots/plot_{exp_plot}.py"
     
     # Check if files exist
@@ -16,7 +16,12 @@ def run_experiment(exp, exp_plot):
     if not os.path.exists(plot_script):
         print(f"Error: Plotting script {plot_script} not found!")
         return False
-    
+
+    # Create output directory based on experiment name (e.g., exp_realworld → Exp#realworld)
+    exp_suffix = exp.replace("exp_", "")
+    output_dir = os.path.join("Exp_results", f"Exp_{exp_suffix}")
+    os.makedirs(output_dir, exist_ok=True)
+
     print(f"\n{'='*50}")
     print(f"Running Experiment {exp}")
     print(f"{'='*50}")
@@ -28,7 +33,6 @@ def run_experiment(exp, exp_plot):
     print(f"\nExecuting experiment script: {exp_script}")
     start_time = time()
     try:
-        # Add project root to PYTHONPATH before running
         env = os.environ.copy()
         env['PYTHONPATH'] = project_root + (os.pathsep + env['PYTHONPATH']) if 'PYTHONPATH' in env else project_root
         
@@ -57,11 +61,11 @@ def main():
     print(f"Python executable: {sys.executable}")
     experiment = ["exp_realworld", "exp_edge", "exp_max_n", "exp_synthetic"]
     experiment_plot = ["realworld", "edge", "max_n", "synthetic"]
-    # Run experiments 1 through 4 in sequence
-    for exp_num in range(0, 4):
+
+    for exp_num in range(4):
         exp = experiment[exp_num]
         exp_plot = experiment_plot[exp_num]
-        success = run_experiment(exp,exp_plot)
+        success = run_experiment(exp, exp_plot)
         if not success:
             print(f"Stopping pipeline due to failure in Experiment {exp_num}")
             continue
