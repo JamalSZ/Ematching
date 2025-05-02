@@ -27,7 +27,7 @@ def get_configure_plot_style():
 # DATA LOADING AND PREP
 # ======================
 def load_and_prepare_data():
-    files = glob.glob("Exp_results/Edge_Cases/*.csv")  
+    files = glob.glob("Exp_results/Exp_edge/*.csv")  
     dfs = []
     
     for file in files:
@@ -162,7 +162,7 @@ def plot_runtime(data, timeout_data):
     
     plt.title("Algorithm Runtime Usage Across Edge Cases", fontweight='bold', pad=20)
     plt.grid(True, alpha=PLOT_SETTINGS['grid_alpha'])
-    plt.savefig("runtime_edge_cases_log.png", dpi=PLOT_SETTINGS['dpi'], bbox_inches="tight")
+    plt.savefig("Plots/runtime_edge_cases_log.png", dpi=PLOT_SETTINGS['dpi'], bbox_inches="tight")
     plt.show()
 
 def plot_memory(data, timeout_data):
@@ -231,14 +231,13 @@ def plot_memory(data, timeout_data):
     
     plt.title("Algorithm Memory Usage Across Edge Cases", fontweight='bold', pad=20)
     plt.grid(True, alpha=PLOT_SETTINGS['grid_alpha'])
-    plt.savefig("memory_edge_cases_log_kb.png", dpi=PLOT_SETTINGS['dpi'], bbox_inches="tight")
+    plt.savefig("Plots/memory_edge_cases_log_kb.png", dpi=PLOT_SETTINGS['dpi'], bbox_inches="tight")
     plt.show()
 # ======================
 # MAIN EXECUTION
 # ======================
 if __name__ == "__main__":
     data, timeout_data = load_and_prepare_data()
-    print(data)
     configure_plot_style()
     plot_runtime(data, timeout_data)
     plot_memory(data, timeout_data)

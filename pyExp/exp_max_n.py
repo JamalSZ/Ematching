@@ -27,11 +27,11 @@ from algs.fit import *
 
 # --- Constants ---
 SEED = 42
-DEFAULT_N = 500_000  # Base time series length
+DEFAULT_N = 10000  # Base time series length
 DEFAULT_N_MAX = 128  # Max value in series
 TIME_LIMITS = [t*60 for t in [1, 2, 3, 4, 5]]  # Time limits in minutes
 E_VALUES = [0.01, 0.51, 1.51, 2.51]
-OUTPUT_DIR = "Exp_Results/Exp_BreakPoints"
+OUTPUT_DIR = "Exp_results/Exp_max_n"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
@@ -80,7 +80,7 @@ def find_max_data_size(
     time_limit: float,
     min_size: int = 10,
     max_size: int = None,
-    step_size: int = 4000,
+    step_size: int = 100,
     tolerance: int = 100
 ) -> int:
     """Binary search to find max input size within time limit."""
@@ -145,7 +145,7 @@ def run_single_experiment(
 
 def save_results(results: List[Dict[str, float]], e: float):
     """Save results to a CSV file for a specific e."""
-    output_file = os.path.join(OUTPUT_DIR, f"exp_bp_{e}.csv")
+    output_file = os.path.join(OUTPUT_DIR, f"{e}.csv")
     headers = ["algorithm", "time_limit", "max_size","e"]
     write_header = not os.path.exists(output_file)
 

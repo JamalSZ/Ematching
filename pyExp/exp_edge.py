@@ -44,7 +44,7 @@ def run_edge_case_experiment(params):
     mem = peak_mem / (1024 * 1024)  # Convert to MB
 
     # Write results to CSV file for edge cases
-    filename = f"Exp_results/Edge_Cases/{alg_name}_{N}.csv"
+    filename = f"Exp_results/Exp_edge/{alg_name}_{N}.csv"
     with open(filename, "a", newline="") as f:
         writer = csv.writer(f)
         writer.writerow([alg_name, len(series), e, rt, mem, run_id])

@@ -1,4 +1,6 @@
+# --- Main Execution ---
 import multiprocessing as mp
+import math
 from tqdm import tqdm
 import time
 import tracemalloc
@@ -45,7 +47,7 @@ def run_experiment(params):
     mem = peak_mem / (1024 * 1024)  # MB
 
     result = [alg_name, len(series), e, rt, mem, run_id]
-    filename = f"Exp_results/Synthetic/{alg_name}_{N}.csv"
+    filename = f"Exp_results/Exp_synthetic/{alg_name}_{N}.csv"
 
     # Ensure safe writing
     with lock:
@@ -62,9 +64,7 @@ def generate_time_series(seed, n, N):
     np.random.seed(seed)
     return np.random.randint(0, N + 1, size=n).tolist()
 
-# --- Main Execution ---
-import multiprocessing as mp
-import math
+
 
 def main():
     algorithms = [

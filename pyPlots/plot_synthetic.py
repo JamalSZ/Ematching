@@ -36,7 +36,7 @@ markers = {
 
 # Plotting
 for N in N_values:
-    csv_files = glob.glob(f"Results/UsefulE/*{N}.csv")
+    csv_files = glob.glob(f"Exp_results/Exp_synthetic/*.csv")
     df_list = []
 
     for file in csv_files:
@@ -82,7 +82,7 @@ for N in N_values:
         plt.figure(figsize=(10, 6))
         sns.lineplot(data=subset, x="n", y="Runtime", style="Algorithm", hue="Algorithm", markers=markers,dashes=False, markersize=16, palette=palette, linewidth=4)
         style_plot(f"Runtime vs n (e={e_val})", "Length (n)x1000", "Runtime (s)")
-        plt.savefig(f"plots/runtime/runtime_vs_n_e{e_val}_N{N}.png")
+        plt.savefig(f"Plots/synthetic_runtime_vs_n_e{e_val}_N{N}.png")
         plt.close()
 
         # Log scale
@@ -90,7 +90,7 @@ for N in N_values:
         sns.lineplot(data=subset, x="n", y="Runtime", hue="Algorithm",style="Algorithm", markers=markers, dashes=False, markersize=16, palette=palette, linewidth=4)
         plt.yscale("log")
         style_plot(f"Runtime vs n (log scale) (e={e_val})", "Length (n) x 1000", "Runtime (log seconds)")
-        plt.savefig(f"plots/runtime/runtime_vs_n_log_e{e_val}_N{N}.png")
+        plt.savefig(f"Plots/synthetic_runtime_vs_n_log_e{e_val}_N{N}.png")
         plt.close()
 
     # ===== Runtime vs e (linear and log scale) =====
@@ -101,7 +101,7 @@ for N in N_values:
         plt.figure(figsize=(10, 6))
         sns.lineplot(data=subset, x="e", y="Runtime", hue="Algorithm",style="Algorithm", markers=markers, dashes=False, markersize=16, palette=palette, linewidth=4)
         style_plot(f"Runtime vs e (n={n_val})", r"$\epsilon$", "Runtime (s)")
-        plt.savefig(f"plots/runtime/runtime_vs_e_n{n_val}_N{N}.png")
+        plt.savefig(f"Plots/synthetic_runtime_vs_e_n{n_val}_N{N}.png")
         plt.close()
 
         # Log scale
@@ -109,7 +109,7 @@ for N in N_values:
         sns.lineplot(data=subset, x="e", y="Runtime", hue="Algorithm",style="Algorithm", markers=markers, dashes=False, markersize=16, palette=palette, linewidth=4)
         plt.yscale("log")
         style_plot(f"Runtime vs e (log scale) (n={n_val})", r"$\epsilon$", "Runtime (log seconds)")
-        plt.savefig(f"plots/runtime/runtime_vs_e_log_n{n_val}_N{N}.png")
+        plt.savefig(f"Plots/synthetic_runtime_vs_e_log_n{n_val}_N{N}.png")
         plt.close()
 
     # ===== Memory Usage vs n for each e =====
@@ -120,7 +120,7 @@ for N in N_values:
         plt.figure(figsize=(10, 6))
         sns.lineplot(data=subset, x="n", y="MemoryMB", hue="Algorithm", style="Algorithm", markers=markers, dashes=False, markersize=16, palette=palette, linewidth=4)
         style_plot(f"Memory Usage vs n (e={e_val})", "Length (n) x1000", "Memory Usage (MB)")
-        plt.savefig(f"plots/memory/memory_vs_n_e{e_val}_N{N}.png")
+        plt.savefig(f"Plots/synthetic_memory_vs_n_e{e_val}_N{N}.png")
         plt.close()
 
     # ===== Memory Usage vs e for each n =====
@@ -129,5 +129,5 @@ for N in N_values:
         plt.figure(figsize=(10, 6))
         sns.lineplot(data=subset, x="e", y="MemoryMB", hue="Algorithm", style="Algorithm", markers=markers, markersize=16, dashes=False, palette=palette, linewidth=4)
         style_plot(f"Memory Usage vs e (n={n_val})", r"$\epsilon$", "Memory Usage (MB)")
-        plt.savefig(f"plots/memory/memory_vs_e_n{n_val}_N{N}.png")
+        plt.savefig(f"Plots/synthetic_memory_vs_e_n{n_val}_N{N}.png")
         plt.close()

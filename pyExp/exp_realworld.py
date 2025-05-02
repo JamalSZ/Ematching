@@ -47,7 +47,7 @@ def run_experiment(params):
     rt = end_time - start_time
     mem = peak_mem / (1024 * 1024)  # Convert bytes to MB
 
-    filename = f"Exp_results/RealWorld/{alg_name}_{dataset}.csv"
+    filename = f"Exp_results/Exp_realworld/{alg_name}_{dataset}.csv"
     with open(filename, "a", newline="") as f:
         writer = csv.writer(f)
         writer.writerow([alg_name, len(series), e, rt, mem, run_id])
@@ -79,9 +79,9 @@ def main():
     ]
 
     length = {
-        "temp": [2000],#0, 4000, 8000, 16000],
-        "stock": [4000],#, 2000, 4000, 6000, 8000],
-        "etth1": [2000]#, 4000, 8000, 16000]
+        "temp": [2000],
+        "stock": [4000],
+        "etth1": [2000]
         }
     datasets = ["temp","etth1","stock"]
     paths = {
@@ -90,9 +90,9 @@ def main():
         "etth1":"Datasets/ETTh1.csv"
     }
     e_values_dict = {
-        "temp": [0.1,0.2, 0.4],
-        "stock": [0.1, 5, 10],
-        "etth1": [0.1,0.2, 0.4]
+        "temp": [0.1,0.2, 0.3,0.4,0.5],
+        "stock": [0.1,2,4,6,8],
+        "etth1": [0.1,0.2, 0.3,0.4,0.5]
     }
     columns = {
         "temp":"HT",
