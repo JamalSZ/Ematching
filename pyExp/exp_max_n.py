@@ -29,8 +29,8 @@ from algs.fit import *
 SEED = 42
 DEFAULT_N = 500_000  # Base time series length
 DEFAULT_N_MAX = 128  # Max value in series
-TIME_LIMITS = [1,1.5,2]#, 4, 6, 8, 10]  # Seconds
-E_VALUES = [0.01, 0.02, 0.03] #0.51, 1.51, 2.51]
+TIME_LIMITS = [t*60 for t in [1, 2, 3, 4, 5]]  # Time limits in minutes
+E_VALUES = [0.01, 0.51, 1.51, 2.51]
 OUTPUT_DIR = "Exp_Results/Exp_BreakPoints"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
