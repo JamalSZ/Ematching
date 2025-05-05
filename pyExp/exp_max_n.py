@@ -23,34 +23,35 @@ from algs.bf import *
 from algs.rnlj import *
 from algs.fit import *
 
-
-
 # --- Constants ---
 SEED = 42
-DEFAULT_N = 10000  # Base time series length
+DEFAULT_N = 500_000  # Base time series length
 DEFAULT_N_MAX = 128  # Max value in series
-TIME_LIMITS = [t*60 for t in [1, 2, 3, 4, 5]]  # Time limits in minutes
+TIME_LIMITS = [60, 120, 180, 240, 300]  # Seconds
 E_VALUES = [0.01, 0.51, 1.51, 2.51]
 OUTPUT_DIR = "Exp_results/Exp_max_n"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-
 # --- Algorithm Wrappers ---
 def algorithm_bf(T, e, n=0):
-    _ = BF(T, e).lzcnl_numeric()
+    _ = BF(T,e).lzcnl_numeric()
+    return
 
 def algorithm_rnlj(T, e, n=0):
-    _ = RNLJ(T, e).nljoin()
+    _ = RNLJ(T,e).nljoin()
+    return
 
 def algorithm_ifi(T, e, n=0):
-    _ = IFI(T, e).LZ2_ifi()
+    _ = IFI(T,e).LZ2_ifi()
+    return
 
-def algorithm_iesj(series, e, n=0):
-    _ = IESJ(series, e).iejoin()
-    
+def algorithm_iesj(series, e, n=0): 
+    _ = IESJ(series,e).iejoin()
+    return
 
 def algorithm_fit(series, e, n=0):
     _ = FIT(series, e).run_fit()
+    return
 def run_algorithm(
     algorithm: Callable,
     data: List[int],
@@ -69,7 +70,7 @@ def run_algorithm(
         future.cancel()
         return time_limit + 1, False
     except Exception as ex:
-        logger.error(f"Algorithm {algorithm.__name__} Exceeded Time Limit: timeout={time_limit}")
+        logger.error(f"Algorithm {algorithm.__name__} failed: {ex}")
         return time_limit + 1, False
 
 # --- Core Experiment Logic ---
@@ -80,7 +81,7 @@ def find_max_data_size(
     time_limit: float,
     min_size: int = 10,
     max_size: int = None,
-    step_size: int = 100,
+    step_size: int = 4000,
     tolerance: int = 100
 ) -> int:
     """Binary search to find max input size within time limit."""
@@ -145,7 +146,7 @@ def run_single_experiment(
 
 def save_results(results: List[Dict[str, float]], e: float):
     """Save results to a CSV file for a specific e."""
-    output_file = os.path.join(OUTPUT_DIR, f"{e}.csv")
+    output_file = os.path.join(OUTPUT_DIR, f"exp_bp_{e}.csv")
     headers = ["algorithm", "time_limit", "max_size","e"]
     write_header = not os.path.exists(output_file)
 
