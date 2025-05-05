@@ -59,8 +59,8 @@ def run_experiment(exp, exp_plot):
 def main():
     print("Starting experiment and plotting pipeline")
     print(f"Python executable: {sys.executable}")
-    experiment = ["exp_realworld", "exp_edge", "exp_max_n", "exp_synthetic"]
-    experiment_plot = ["realworld", "edge", "max_n", "synthetic"]
+    experiment = ["exp_realworld", "exp_max_n", "exp_edge"]
+    experiment_plot = ["realworld", "max_n", "edge"]
 
     for exp_num in range(4):
         exp = experiment[exp_num]
