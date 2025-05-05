@@ -17,7 +17,7 @@ To get started, clone the repository and navigate into the directory `Ematching`
 
 To reproduce all experiments and generate plots, simply run: 
 
-`python run_pipeline.py`
+`python run_experiments.py`
 
 This script sequentially:
 
