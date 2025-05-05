@@ -4,7 +4,7 @@ import glob
 import os
 import re
 import numpy as np
-
+EPSILONS = [0.01,0.51,1.51,2.51]
 # ====================== CUSTOMIZATION SECTION ======================
 # Define your 5 algorithms and their styles here
 ALGORITHM_STYLES = {
@@ -53,12 +53,10 @@ def create_combined_plot(data_dict):
     # Keep track of handles and labels for common legend
     legend_handles_labels = []
 
-    SELECTED_EPSILONS = sorted(data_dict.keys())
-    print(SELECTED_EPSILONS)
 
-    for idx, e in enumerate(SELECTED_EPSILONS):
+    for idx, e in enumerate(EPSILONS):
         ax = axes[idx]
-        df = data_dict.get(e)
+        df = data_dict.get(f"Exp_results/Exp_max_n/exp_bp_{e}.csv}")
         if df is None:
             print(f"Warning: No data found for e = {e}")
             continue
