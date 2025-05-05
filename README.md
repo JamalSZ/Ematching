@@ -22,7 +22,7 @@ To reproduce all experiments and generate plots, simply run:
 This script sequentially:
 
 - Executes all four experimental scripts from `pyExp/`
-- Saves their CSV outputs to `Exp_results/Exp#i/`
+- Saves their CSV outputs to `Exp_results/`
 - Runs the plotting scripts from `pyPlots/` right after each experiment
 - Saves the resulting plots in the `Plots/` folder
 
