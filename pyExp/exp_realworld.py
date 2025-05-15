@@ -106,7 +106,7 @@ def main():
     # Calculate number of CPUs to use (70% of total)
     total_cpus = mp.cpu_count()
     cpus_to_use = max(1, math.ceil(total_cpus * 0.7))
-    print(f"Total CPUs available: {total_cpus}, using {cpus_to_use} CPUs (7%)")
+    print(f"Total CPUs available: {total_cpus}, using {cpus_to_use} CPUs (70%)")
 
     params_list = []
     for dataset in datasets:
