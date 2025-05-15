@@ -62,7 +62,7 @@ def main():
     experiment = ["exp_realworld", "exp_max_n", "exp_edge"]
     experiment_plot = ["realworld", "max_n", "edge"]
 
-    for exp_num in range(4):
+    for exp_num in range(3):
         exp = experiment[exp_num]
         exp_plot = experiment_plot[exp_num]
         success = run_experiment(exp, exp_plot)
