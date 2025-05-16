@@ -56,7 +56,7 @@ def create_combined_plot(data_dict):
 
     for idx, e in enumerate(EPSILONS):
         ax = axes[idx]
-        df = data_dict.get(f"Exp_results/Exp_max_n/exp_bp_{e}.csv}")
+        df = data_dict.get(f"Exp_results/Exp_max_n/exp_bp_{e}.csv")
         if df is None:
             print(f"Warning: No data found for e = {e}")
             continue
