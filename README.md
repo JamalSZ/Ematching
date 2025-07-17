@@ -1,5 +1,5 @@
 # Ematching
-VLDB2026: Finding Longest Subsequence Matches with Fixed Error Margin of Time Series for Entropy Rate Estimation
+Finding Longest Subsequence Matches with Fixed Error Margin of Time Series for Entropy Rate Estimation
 
 This repository contains implementations of five algorithms, four experimental setups, and plotting tools to reproduce and visualize the results from our paper. 
 
